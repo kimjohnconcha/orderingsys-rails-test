@@ -15,11 +15,13 @@ body{
 /*--fonts--*/
 @font-face{
 	font-family: 'Didact Gothic';
-	src:url(../fonts/Didact_Gothic/DidactGothic.ttf) format('truetype');
+    // src:url(../fonts/Didact_Gothic/DidactGothic.ttf) format('truetype');
+    src:font-url('Didact_Gothic/DidactGothic.ttf') format('truetype');
 }
 @font-face{
 	font-family: 'Pathway Gothic One';
-	src:url(../fonts/Pathway_Gothic_One/PathwayGothicOne-Regular.ttf) format('truetype');
+    // src:url(../fonts/Pathway_Gothic_One/PathwayGothicOne-Regular.ttf) format('truetype');
+    src:font-url('Pathway_Gothic_One/PathwayGothicOne-Regular.ttf') format('truetype');
 }
 .header-top{
     position: relative;
