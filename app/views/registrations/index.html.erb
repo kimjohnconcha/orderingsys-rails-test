@@ -1,0 +1,47 @@
+<div class="head-bread">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="register.html">LOGIN</a></li>
+            <li class="active">REGISTER</li>
+        </ol>
+    </div>
+</div>
+
+<div class="reg-form">
+    <div class="container">
+        <div class="reg">
+            <h3>Register Now</h3>
+            <p>Welcome, please enter the following details to continue.</p>
+            <p>If you have previously registered with us, <a href="#">click here</a></p>            
+                <%= form_tag("/users/create", method: "post") do %>
+                <ul>
+                    <li class="text-info">First Name: </li>
+                    <li><input type="text" name="first_name"></li>
+                </ul>
+                <ul>
+                    <li class="text-info">Last Name: </li>
+                    <li><input type="text" name="last_name"></li>
+                    </ul>				 
+                <ul>
+                    <li class="text-info">Email: </li>
+                    <li><input type="text" name="email"></li>
+                </ul>
+                <ul>
+                    <li class="text-info">Password: </li>
+                    <li><input type="password" name="password"></li>
+                </ul>
+                <ul>
+                    <li class="text-info">Re-enter Password:</li>
+                    <li><input type="password" name="password_confirmation"></li>
+                </ul>
+                <ul>
+                    <li class="text-info">Mobile Number:</li>
+                    <li><input type="text" name="phone"></li>
+                </ul>						
+                <input type="submit" value="Register Now">
+                <p class="click">By clicking this button, you are agree to my  <a href="#">Policy Terms and Conditions.</a></p> 
+            <% end %>
+        </div>
+    </div>
+</div>
