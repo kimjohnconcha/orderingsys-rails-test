@@ -19,7 +19,20 @@ class RegistrationsController < ApplicationController
     end
 
     def new
-
+        #debugger
+        user = User.find_by(email: params[:email].downcase)
+        if user
+            if user.valid_password?(params[:password])
+                sign_in(user)
+                redirect_to root_path
+            else
+                flash[:danger] = "Invalid username and/or password."
+                redirect_to signin_path
+            end
+        else
+            flash[:danger] = "Invalid username and/or password."
+            redirect_to signin_path
+        end
     end
 
     def destroy

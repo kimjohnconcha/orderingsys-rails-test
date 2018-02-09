@@ -9,14 +9,19 @@
                     <%= link_to "Sign up", registration_path, :class => "btn btn-default log-bar", :role => "button" %>
                     <%= link_to "Login", signin_path, :class => "btn btn-default log-bar", :role => "button" %>
                 <% else  %>
+                <div>
+                Welcome <%= current_user.first_name  %> !
+                </div> 
                 <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => "btn btn-default log-bar", :role => "button" %>
                 <% end %>
 
                 <div class="cart box_1">
-                    <a href="checkout.html">
+                    <a href="/carts">
                     <h3>
                         <div class="total">
-<span class="simpleCart_total"></span>(<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)</div></h3>
+                            <span class="simpleCart_total"></span>(<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)
+                        </div>
+                    </h3>
                     </a>
                     <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
                     <div class="clearfix"> </div>

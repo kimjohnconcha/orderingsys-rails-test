@@ -1,0 +1,33 @@
+<div class="ctitems">
+<% @carts.each.with_index(1) do |cart, index| %>
+<!-- <script>$(document).ready(function(c) {
+        $('.close<%= index %>').on('click', function(c){
+            $('.cart-header<%= index %>').fadeOut('slow', function(c){
+                $('.cart-header<%= index %>').remove();
+            });
+            });	  
+        });
+</script> -->
+<div class="cart-header<%= index %> crthdr">
+<div class="close<%= index %> clsbtn" data-index=<%= cart.id %> ><span class="glyphicon glyphicon-remove" id="cart_delete" aria-hidden="true"></span></div>
+    <div class="cart-sec simpleCart_shelfItem" data-index=<%= index %> >
+        <div class="cart-item cyc">
+            <%= image_tag("grid8.jpg", :alt => "", :class => "img-responsive") %>
+        </div>
+        <div class="cart-item-info">
+            <ul class="qty">
+                <li><p>Size : <%= cart.size %></p></li>
+                <li><p>Qty : 1</p></li>
+                <li><p>Price each : $<%= cart.product.price %></p></li>
+            </ul>
+            <div class="delivery">
+                    <p>Service Charges : Rs.190.00</p>
+                    <span>Delivered in 2-3 bussiness days</span>
+                    <div class="clearfix"></div>
+            </div>	
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<% end %> 
+</div>

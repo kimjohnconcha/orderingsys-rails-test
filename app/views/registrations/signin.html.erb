@@ -15,14 +15,23 @@
                 <div class="strip"></div>
                 <p>Welcome, please enter the following to continue.</p>
                 <p>If you have previously Login with us, <a href="#">Click Here</a></p>
-                <form>
-                    <h5>User Name:</h5>	
-                    <input type="text" value="">
+                <div class="row">
+                <div class="col-xs-10 col-xs-offset-0">
+                    <% flash.each do |name, msg| %>
+                    <div class='alert alert-<%="#{name}" %>'>
+                        <a href="#" class="close" data-dismiss="alert">&#215;</a>
+                        <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+                    </div>
+                    <% end %>
+                </div>
+                </div>
+                <%= form_tag("/users/new", method: "post") do %>
+                    <h5>Email:</h5>	
+                    <input name="email" type="text">
                     <h5>Password:</h5>
-                    <input type="password" value=""><br>					
+                    <input name="password" type="password"><br>					
                     <input type="submit" value="Login">
-
-                </form>
+                <% end %>
                 <a href="#">Forgot Password ?</a>
             </div>
             <div class="col-md-6 login-right">

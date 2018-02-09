@@ -1,0 +1,23 @@
+<%= form_for @product, :url => { :action => "create" }, :html => {:multipart => true} do |f| %>
+<ul>
+    <li class="text-info">Name: </li>
+    <li><input type="text" name="name"></li>
+</ul>
+<ul>
+    <li class="text-info">Description: </li>
+    <li><input type="text" name="description"></li>
+    </ul>				 
+<ul>
+    <li class="text-info">Price: </li>
+    <li><input type="text" name="price"></li>
+</ul>
+
+<ul>
+    <li class="text-info">Image: </li>
+    <input type="file" name="image" accept="image/*">
+</ul>
+
+<input type="submit" value="Save">
+
+
+<% end %>

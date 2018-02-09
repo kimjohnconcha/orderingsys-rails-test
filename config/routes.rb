@@ -4,11 +4,17 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index]
 
-  resources :products
+  #resources :products, only: [:show]
+
+  resources :carts, only: [:index, :create, :destroy]
 
   root 'products#index'
 
-  get 'users/new', to: 'registrations#new'
+  get 'products/browse', to: 'products#search'
+
+  resources :products, only: [:show, :create, :new]
+
+  post 'users/new', to: 'registrations#new'
 
   get 'registration', to: 'registrations#index'
   get 'signin', to: 'registrations#signin'
