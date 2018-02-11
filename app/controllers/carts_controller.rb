@@ -5,10 +5,14 @@ def index
 end
 
 def create
-    @cart = Cart.new(:product_id =>  params[:product], :quantity =>  params[:quantity], 
-        :user_id => current_user.id, :size => params[:size])
-    if @cart.save
-      redirect_to carts_path
+    if user_signed_in?
+        @cart = Cart.new(:product_id =>  params[:product], :quantity =>  params[:quantity], 
+            :user_id => current_user.id, :size => params[:size])
+        if @cart.save
+            render json: { message: "added to cart", status: 200}, status: 200
+        end
+    else
+        render json: { message: "Not signed in", status: 300}, status: 300
     end
 end
 

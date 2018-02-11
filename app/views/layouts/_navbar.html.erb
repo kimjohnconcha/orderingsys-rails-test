@@ -46,6 +46,46 @@
 
                 <div class="collapse navbar-collapse collapse-pdng" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav nav-font">
+
+                        <% if user_signed_in? && current_user.admin  %>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="products.html">All Products</a></li>
+                                <li><a href="products.html">Add new product</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Orders<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="products.html">Pending Orders</a></li>
+                                <li><a href="products.html">Order History</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Users<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="products.html">User Accounts</a></li>
+                                <li><a href="products.html">Order History</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="products.html">Pending Orders</a></li>
+                                <li><a href="products.html">Order History</a></li>
+                            </ul>
+                        </li>
+
+
+                        <% else %>
+
+
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Shop<b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -116,6 +156,10 @@
                             </ul>
                         </li>
                         <li><a href="contact.html">Catch</a></li>
+
+                        <% end %>
+
+
                         <div class="clearfix"></div>
                     </ul>
                     <div class="clearfix"></div>

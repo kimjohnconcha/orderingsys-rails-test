@@ -12,7 +12,12 @@ Rails.application.routes.draw do
 
   get 'products/browse', to: 'products#search'
 
+  get 'products/all_products', to: 'products#all_products'
+
   resources :products, only: [:show, :create, :new]
+
+  resources :orders, only: [:index, :create]
+
 
   post 'users/new', to: 'registrations#new'
 

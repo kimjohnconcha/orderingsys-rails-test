@@ -9,8 +9,7 @@ class ProductsController < ApplicationController
     end
 
     def search
-
-
+        @products = Product.all
     end
 
     def create
@@ -26,6 +25,17 @@ class ProductsController < ApplicationController
 
     def new
         @product = Product.new
+    end
+
+    def all_products
+        if !user_signed_in?
+            redirect_to root_path
+        
+        elsif !current_user.admin
+            redirect_to root_path
+        else
+            @product = Product.all
+        end
     end
 
     private

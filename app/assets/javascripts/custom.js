@@ -23,8 +23,10 @@ $(document).ready(function(){
                 xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
             },
             error: function(result) {
+                location = "/signin"
             },
             success: function(result) {
+                location = "/carts"
             }
 		});
 	
