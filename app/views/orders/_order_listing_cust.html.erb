@@ -3,17 +3,21 @@
 <div class="cart-header<%= index %> crthdr">
     <div class="cart-sec simpleCart_shelfItem" data-index=<%= index %> >
         <div class="cart-item cyc">
-            <%= image_tag("order.png", :alt => "", :class => "img-responsive") %>
+            <%= image_tag("order.png", :alt => "", :class => "img-responsive order-image") %>
         </div>
         <div class="cart-item-info">
             <ul class="qty">
                 <li><p>Order number :<%= order.order_number%></p></li>
-                <li><p>Qty : asd</p></li>
-                <li><p>Total : $asd</p></li>
+                <li><p>Qty : <%= OrderItem.where('order_id = ?', order.id).count %></p></li>
+                <!-- <li><p>Total : $asd</p></li> -->
             </ul>
             <div class="delivery">
-                    <p>Status : Pending</p>
-                    <div class="clearfix"></div>
+                <p>Status : Pending</p>
+                <% if current_user.admin %>
+                <span>User : <%= User.find(order.user_id).email %></span> <br>
+                <% end %>
+                <span>Added : <%= order.created_at.strftime("%Y-%m-%d") %><br/span>
+                <div class="clearfix"></div>
             </div>	
         </div>
         <div class="clearfix"></div>

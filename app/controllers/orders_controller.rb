@@ -3,7 +3,10 @@ class OrdersController < ApplicationController
     def index
         if user_signed_in?
             @carts = Cart.joins('INNER JOIN products on product_id = products.id').where('user_id = ?', current_user.id)
-            @orders = Order.where('user_id = ?', current_user.id)
+            @orders = Order.joins(:order_items).where('user_id = ?', current_user.id)
+            if current_user.admin
+                @orders = Order.all
+            end
         else
             redirect_to root_path
         end

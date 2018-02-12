@@ -10,12 +10,11 @@ class RegistrationsController < ApplicationController
         user = User.new(user_params)
         if user.save
             sign_in(user)
-            
+            redirect_to root_path
         else
-
+            flash[:danger] = "Invalid inputs"
+            redirect_to registration_path
         end
-
-        debugger
     end
 
     def new
@@ -36,6 +35,10 @@ class RegistrationsController < ApplicationController
     end
 
     def destroy
+
+    end
+
+    def forgot_pass
 
     end
 

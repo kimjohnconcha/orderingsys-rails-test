@@ -1,7 +1,7 @@
 <div class="head-bread">
     <div class="container">
         <ol class="breadcrumb">
-            <li><a href="index.html">HOME</a></li>
+            <li> <%= link_to "HOME", root_path %> </li>
             <li class="active">LOGIN</li>
         </ol>
     </div>
@@ -11,9 +11,10 @@
     <div class="container">
         <div class="login-grids">
             <div class="col-md-6 log">
-                <h3>Login</h3>
+                <h3>Reset Password</h3>
                 <div class="strip"></div>
-                <p>Welcome, please enter the following to continue.</p>
+                <p>Please input your email below. We will email an instruction on 
+                    how to reset your email.</p>
                 <!-- <p>If you have previously Login with us, <a href="#">Click Here</a></p> -->
                 <div class="row">
                 <div class="col-xs-10 col-xs-offset-0">
@@ -27,12 +28,9 @@
                 </div>
                 <%= form_tag("/users/new", method: "post") do %>
                     <h5>Email:</h5>	
-                    <input name="email" type="text">
-                    <h5>Password:</h5>
-                    <input name="password" type="password"><br>					
-                    <input type="submit" value="Login">
+                    <input name="email" type="text">			
+                    <input type="submit" value="Send">
                 <% end %>
-                <%= link_to "Forgot password ?", registration_forgotpass_path %>
             </div>
             <div class="col-md-6 login-right">
                 <h3>New Registration</h3>

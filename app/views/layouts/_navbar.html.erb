@@ -2,7 +2,7 @@
     <div class="container">
         <div class="header-top">
             <div class="logo">
-                <%= link_to "N-AIR", root_path %>
+                <%= link_to "NIKE-MARKET", root_path %>
             </div>
             <div class="login-bars">
                 <% if !user_signed_in?  %>
@@ -61,8 +61,8 @@
                             </ul>
                         </li>
                         <li><a href="/orders">Orders</a></li>
-                        <li><a href="contact.html">Users</a></li>
-                        <li><a href="contact.html">Reviews</a></li>
+                        <li><a href="#">Users</a></li>
+                        <li><a href="#">Reviews</a></li>
 
                         <% else %>
 
@@ -70,13 +70,13 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Shop<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/products/browse?type=running">Running</a></li>
-                                <li><a href="/products/browse?type=basketball">Basket ball</a></li>
-                                <li><a href="/products/browse?type=football">Foot ball</a></li>
-                                <li><a href="/products/browse?type=soccer">Soccer</a></li>
-                                <li><a href="/products/browse?type=volleyball">Volley ball</a></li>
-                                <li><a href="/products/browse?type=baseball">Base ball</a></li>
-                                <li><a href="/products/browse?type=tennis">Tennis</a></li>
+                                <li><a href="/products/browse?shoetype=running">Running</a></li>
+                                <li><a href="/products/browse?shoetype=basketball">Basket ball</a></li>
+                                <li><a href="/products/browse?shoetype=football">Foot ball</a></li>
+                                <li><a href="/products/browse?shoetype=soccer">Soccer</a></li>
+                                <li><a href="/products/browse?shoetype=volleyball">Volley ball</a></li>
+                                <li><a href="/products/browse?shoetype=baseball">Base ball</a></li>
+                                <li><a href="/products/browse?shoetype=tennis">Tennis</a></li>
                                 <li class="divider"></li>
                                 <li><a href="/orders">View Orders</a></li>
 

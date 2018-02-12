@@ -13,7 +13,17 @@
         <div class="reg">
             <h3>Register Now</h3>
             <p>Welcome, please enter the following details to continue.</p>
-            <p>If you have previously registered with us, <a href="#">click here</a></p>            
+            <!-- <p>If you have previously registered with us, <a href="#">click here</a></p>       -->
+            <div class="row">
+                <div class="col-xs-10 col-xs-offset-0">
+                    <% flash.each do |name, msg| %>
+                    <div class='alert alert-<%="#{name}" %>'>
+                        <a href="#" class="close" data-dismiss="alert">&#215;</a>
+                        <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+                    </div>
+                    <% end %>
+                </div>
+                </div>      
                 <%= form_tag("/users/create", method: "post") do %>
                 <ul>
                     <li class="text-info">First Name: </li>

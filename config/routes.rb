@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   get 'registration', to: 'registrations#index'
   get 'signin', to: 'registrations#signin'
 
+  get 'registration/forgotpass', to: 'registrations#forgot_pass'
+
   post 'users/create', to: 'registrations#create'
 
   get 'logout', to: 'registrations#destroy'

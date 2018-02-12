@@ -8,11 +8,21 @@ class ProductsController < ApplicationController
     end
 
     def show
-        @product = Product.find(params[:id])
+        @product = Product.find(params[:id]) rescue nil
+        if user_signed_in?
+            @carts = Cart.joins('INNER JOIN products on product_id = products.id').where('user_id = ?', current_user.id)
+        end 
     end
 
     def search
-        @products = Product.all
+        if params[:category].present?
+            @products = Product.where('category like ?', params[:category])
+        elsif params[:shoetype].present?
+            @products = Product.where('shoetype like ?', params[:shoetype])
+        else
+            @product = Product.all
+        end
+
         if user_signed_in?
             @carts = Cart.joins('INNER JOIN products on product_id = products.id').where('user_id = ?', current_user.id)
         end

@@ -1,7 +1,13 @@
 class CartsController < ApplicationController
 
 def index
-     @carts = Cart.joins('INNER JOIN products on product_id = products.id').where('user_id = ?', current_user.id)
+    if !user_signed_in?
+        redirect_to root_path
+    elsif !current_user.admin
+        redirect_to root_path
+    else
+        @carts = Cart.joins('INNER JOIN products on product_id = products.id').where('user_id = ?', current_user.id)
+    end
 end
 
 def create
