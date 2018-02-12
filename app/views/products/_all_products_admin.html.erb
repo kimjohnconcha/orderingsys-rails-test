@@ -1,0 +1,26 @@
+<div class="ctitems">
+    <% @products.each.with_index(1) do |product, index| %>
+    <div class="cart-header<%= index %> crthdr">
+    <a href="/products/edit?id=<%= product.id %>"> <div class="close<%= index %>"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></div></a>
+        <div class="cart-sec simpleCart_shelfItem" data-index=<%= index %> >
+            <div class="cart-item cyc">
+                <img src="<%= product.image %>" alt="" class="img-responsive">
+            </div>
+            <div class="cart-item-info">
+                <ul class="qty">
+                    <li><p>Size : <%= product.size %></p></li>
+                    <li><p>Name : <%= product.name %></p></li>
+                    <li><p>Price each : $<%= product.price %></p></li>
+                </ul>
+                <div class="delivery">
+                        <p>Description : <%= product.description %></p>
+                        <span>Added: <%= product.created_at.strftime("%Y-%m-%d") %> </span>
+                        <div class="clearfix"></div>
+                </div>	
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <% end %> 
+</div>
+        

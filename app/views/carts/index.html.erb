@@ -29,7 +29,7 @@
                <div class="clearfix"> </div>
             </ul> 
             <div class="clearfix"></div>
-            <a class="order" href="#">Checkout</a>
+            <%= link_to "Checkout", orders_create_path, :class => "order", :method => "post" %>
         </div>
         <div class="col-md-9 cart-items">
             <h1>My Shopping Bag (<%= @carts.count %>)</h1>

@@ -1,0 +1,24 @@
+<div class="ctitems">
+<% @orders.each.with_index(1) do |order, index| %>
+<div class="cart-header<%= index %> crthdr">
+    <div class="cart-sec simpleCart_shelfItem" data-index=<%= index %> >
+        <div class="cart-item cyc">
+            <%= image_tag("order.png", :alt => "", :class => "img-responsive") %>
+        </div>
+        <div class="cart-item-info">
+            <ul class="qty">
+                <li><p>Order number :<%= order.order_number%></p></li>
+                <li><p>Qty : asd</p></li>
+                <li><p>Total : $asd</p></li>
+            </ul>
+            <div class="delivery">
+                    <p>Status : Pending</p>
+                    <div class="clearfix"></div>
+            </div>	
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<% end %> 
+</div>
+        

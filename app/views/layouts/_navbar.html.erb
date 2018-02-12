@@ -15,19 +15,23 @@
                 <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => "btn btn-default log-bar", :role => "button" %>
                 <% end %>
 
+                <% if user_signed_in? && !current_user.admin  %>
+
                 <div class="cart box_1">
                     <a href="/carts">
                     <h3>
                         <div class="total">
-                            <span class="simpleCart_total"></span>(<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)
+                            <span>$<%= if @carts.count > 0 then @carts.sum('quantity * products.price').round(2) else 0.00 end %></span>(<%= @carts.count %>)
                         </div>
                     </h3>
                     </a>
-                    <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+                    <p></p><label href="/carts">Your Cart</label></p>
                     <div class="clearfix"> </div>
                 </div>	
+
+                <% end %>
             </div>
-<div class="clearfix"></div>
+        <div class="clearfix"></div>
         </div>
         <!---menu-----bar--->
         <div class="header-botom">
@@ -52,36 +56,13 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="products.html">All Products</a></li>
-                                <li><a href="products.html">Add new product</a></li>
+                                <li><a href="/products/all_products">All Products</a></li>
+                                <li><a href="/products/new">Add new product</a></li>
                             </ul>
                         </li>
-
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Orders<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="products.html">Pending Orders</a></li>
-                                <li><a href="products.html">Order History</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Users<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="products.html">User Accounts</a></li>
-                                <li><a href="products.html">Order History</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="products.html">Pending Orders</a></li>
-                                <li><a href="products.html">Order History</a></li>
-                            </ul>
-                        </li>
-
+                        <li><a href="/orders">Orders</a></li>
+                        <li><a href="contact.html">Users</a></li>
+                        <li><a href="contact.html">Reviews</a></li>
 
                         <% else %>
 
@@ -89,73 +70,22 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Shop<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="products.html">Shoes</a></li>
-                                <li><a href="products.html">Tees</a></li>
-                                <li><a href="products.html">Tops</a></li>
+                                <li><a href="/products/browse?type=running">Running</a></li>
+                                <li><a href="/products/browse?type=basketball">Basket ball</a></li>
+                                <li><a href="/products/browse?type=football">Foot ball</a></li>
+                                <li><a href="/products/browse?type=soccer">Soccer</a></li>
+                                <li><a href="/products/browse?type=volleyball">Volley ball</a></li>
+                                <li><a href="/products/browse?type=baseball">Base ball</a></li>
+                                <li><a href="/products/browse?type=tennis">Tennis</a></li>
                                 <li class="divider"></li>
-                                <li><a href="products.html">Tracks</a></li>
-                                <li class="divider"></li>
-                                <li><a href="products.html">Gear</a></li>
+                                <li><a href="/orders">View Orders</a></li>
+
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Men<b class="caret"></b></a>
-                            <ul class="dropdown-menu multi-column columns-3">
-                                <div class="row">
-                                    <div class="col-sm-4 menu-img-pad">
-                                        <ul class="multi-column-dropdown">
-                                            <li><a href="products.html">Joggers</a></li>
-                                            <li><a href="products.html">Foot Ball</a></li>
-                                            <li><a href="products.html">Cricket</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="products.html">Tennis</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="products.html">Casual</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-4 menu-img-pad">
-                                            <a href="#"><%= image_tag("menu1.jpg", :alt => "", :class => "img-rsponsive men-img-wid") %></a>                        
-                                    </div>
-                                    <div class="col-sm-4 menu-img-pad">
-                                            <a href="#"><%= image_tag("menu2.jpg", :alt => "", :class => "img-rsponsive men-img-wid") %></a> 
-                                    </div>
-                                </div>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Women<b class="caret"></b></a>
-                            <ul class="dropdown-menu multi-column columns-2">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <ul class="multi-column-dropdown">
-                                            <li><a href="products.html">Tops</a></li>
-                                            <li><a href="products.html">Bottoms</a></li>
-                                            <li><a href="products.html">Yoga Pants</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="products.html">Sports</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="products.html">Gym</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <a href="#"><%= image_tag("menu3.jpg", :alt => "", :class => "img-rsponsive men-img-wid") %></a> 
-                                    </div>
-                                </div>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">kids<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="products.html">Tees</a></li>
-                                <li><a href="products.html">Shorts</a></li>
-                                <li><a href="products.html">Gear</a></li>
-                                <li class="divider"></li>
-                                <li><a href="products.html">Watches</a></li>
-                                <li class="divider"></li>
-                                <li><a href="products.html">Shoes</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="contact.html">Catch</a></li>
+                        <li><a href="/products/browse?category=men">Men</a></li>
+                        <li><a href="/products/browse?category=women">Women</a></li>
+                        <li><a href="/products/browse?category=kids">Kids</a></li>
+                        <li><a href="/contact">Catch</a></li>
 
                         <% end %>
 

@@ -37,7 +37,6 @@ $(document).ready(function(){
         var dataSrc = $(e.currentTarget);
         var cartIndex = dataSrc.data('index');
 
-
 		$.ajax({
             url: '/carts/' + cartIndex,
             type: "DELETE",  
@@ -52,7 +51,9 @@ $(document).ready(function(){
             success: function(result) {
                 location.reload();
             }
-		});
+        });
+        
+
 
 
 

@@ -39,6 +39,12 @@ class RegistrationsController < ApplicationController
 
     end
 
+    def contact
+        if user_signed_in?
+            @carts = Cart.joins('INNER JOIN products on product_id = products.id').where('user_id = ?', current_user.id)
+        end
+    end
+
     private
 
     def user_params

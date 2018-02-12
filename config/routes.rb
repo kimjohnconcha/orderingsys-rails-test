@@ -14,10 +14,15 @@ Rails.application.routes.draw do
 
   get 'products/all_products', to: 'products#all_products'
 
+  get 'products/edit', to: 'products#edit'
+
+  put 'products/update', to: 'products#update'
+
   resources :products, only: [:show, :create, :new]
 
-  resources :orders, only: [:index, :create]
+  post 'orders/create', to: 'orders#create'
 
+  resources :orders, only: [:index]
 
   post 'users/new', to: 'registrations#new'
 
@@ -27,5 +32,7 @@ Rails.application.routes.draw do
   post 'users/create', to: 'registrations#create'
 
   get 'logout', to: 'registrations#destroy'
+
+  get 'contact', to: 'registrations#contact'
 
 end

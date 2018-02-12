@@ -1,0 +1,69 @@
+<%= form_for @product, :url => { :action => "update" }, :method => "put", :html => {:multipart => true} do |f| %>
+<ul>
+    <li class="text-info">Name: </li>
+    <li><input type="text" name="name" value="<%= @product.name %>"></li>
+</ul>
+<ul>
+    <li class="text-info">Description: </li>
+    <li><input type="text" name="description" value="<%= @product.description %>" ></li>
+</ul>
+
+<ul>
+    <li class="text-info">Price: </li>
+    <li><input type="text" name="price" value="<%= @product.price %>" ></li>
+</ul>
+
+<ul>
+    <li class="text-info">Highlights: </li>
+    <li><input type="text" name="highlights" value="<%= @product.highlights %>" ></li>
+</ul>
+
+<ul>
+    <li class="text-info">Details: </li>
+    <li><input type="text" name="details" value="<%= @product.details %>"></li>
+</ul>
+
+<ul>
+    <li class="text-info">Image: </li>
+    <input type="file" name="image" accept="image/*" >
+</ul>
+
+<ul>
+    <li class="text-info">Category: </li>
+    <select name="category">
+        <option value="men">Men</option>
+        <option value="women">Women</option>
+        <option value="kids">kids</option>
+    </select>
+</ul>
+<input type="hidden" name="id" value="<%= @product.id %>">
+<ul>
+    <li class="text-info">Type: </li>
+    <select name="shoetype">
+        <option value="running">Running</option>
+        <option value="basketball">Basket ball</option>
+        <option value="football">Foot ball</option>
+        <option value="soccer">Soccer</option>
+        <option value="volleyball">Volley ball</option>
+        <option value="baseball">Base ball</option>
+        <option value="tennis">Tennis</option>
+    </select>
+</ul>
+
+<ul>
+        <li class="text-info">Size: </li>
+        <select name="size">
+            <option value="6us">6 US</option>
+            <option value="7us">7 US</option>
+            <option value="8us">8 US</option>
+            <option value="9us">9 US</option>
+            <option value="10us">10 US</option>
+            <option value="11us">11 US</option>
+        </select>
+    </ul>
+
+<br><br>
+
+<button type="submit"> <a class="btn btn-default log-bar">Save product</a></button>
+
+<% end %>
