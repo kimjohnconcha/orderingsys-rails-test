@@ -1,7 +1,7 @@
 <div class="head-bread">
     <div class="container">
         <ol class="breadcrumb">
-            <li><a href="index.html">HOME</a></li>
+            <li> <%= link_to "Home", root_path %> </li>
             <li class="active">LOGIN</li>
         </ol>
     </div>
@@ -32,7 +32,7 @@
                     <input name="password" type="password"><br>					
                     <input type="submit" value="Login">
                 <% end %>
-                <%= link_to "Forgot password ?", registration_forgotpass_path %>
+                <%= link_to "Forgot password ?", new_user_password_path %>
             </div>
             <div class="col-md-6 login-right">
                 <h3>New Registration</h3>

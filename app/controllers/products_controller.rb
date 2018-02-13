@@ -8,10 +8,16 @@ class ProductsController < ApplicationController
     end
 
     def show
-        @product = Product.find(params[:id]) rescue nil
-        if user_signed_in?
-            @carts = Cart.joins('INNER JOIN products on product_id = products.id').where('user_id = ?', current_user.id)
-        end 
+        if !user_signed_in?
+            redirect_to signin_path
+        elsif current_user.admin
+            redirect_to root_path
+        else
+            @product = Product.find(params[:id]) rescue nil
+            if user_signed_in?
+                @carts = Cart.joins('INNER JOIN products on product_id = products.id').where('user_id = ?', current_user.id)
+            end 
+        end
     end
 
     def search
