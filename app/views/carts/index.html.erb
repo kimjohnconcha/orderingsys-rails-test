@@ -11,6 +11,7 @@
 <div class="check">
     <div class="container">	 
         <div class="col-md-3 cart-total">
+            <%= form_tag orders_create_path, method: :post do %>
             <%= link_to "Browse Products", products_browse_path, :class => "continue"%>
             <div class="price-details">
                 <h3>Price Details</h3>
@@ -29,7 +30,13 @@
                <div class="clearfix"> </div>
             </ul> 
             <div class="clearfix"></div>
-            <%= link_to "Checkout", orders_create_path, :class => "order", :method => "post" %>
+            <input type="hidden" name="amount" value="<%= if @carts.count > 0 then (@carts.sum('quantity * products.price').round(0) + 150) * 100 else 0.00 end %>" >
+             <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="Nike-Market Purchase"
+          data-amount="<%= if @carts.count > 0 then (@carts.sum('quantity * products.price').round(2) + 150) * 100 else 0.00 end %>"
+          data-locale="auto"></script>
+        <% end %> 
         </div>
         <div class="col-md-9 cart-items">
             <h1>My Shopping Bag (<%= @carts.count %>)</h1>
