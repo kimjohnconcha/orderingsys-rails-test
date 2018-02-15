@@ -24,11 +24,13 @@ class OrdersController < ApplicationController
             break unless Order.exists?(:order_number => order_no)
         end
 
-        customer = Stripe::Customer.create( :email => params[:stripeEmail], :source  => params[:stripeToken])
+        @amount = 500
+
+        customer = Stripe::Customer.create(:email => params[:stripeEmail], :source  => params[:stripeToken])
 
         charge = Stripe::Charge.create(
             :customer    => customer.id,
-            :amount      => params[:amount],
+            :amount      => @amount,
             :description => 'Nike-Market Purchase',
             :currency    => 'usd'
           )
@@ -48,6 +50,8 @@ class OrdersController < ApplicationController
     private
 
     def gen_order_number
+        require 'securerandom'
+
         return DateTime.now.strftime("%Y%m").to_s + SecureRandom.hex(16/4).upcase
     end
 
